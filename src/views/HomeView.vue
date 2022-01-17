@@ -7,7 +7,7 @@ const modes = ["encrypt", "decrypt"];
 const mode = useLocalStorage("cypherDirection", modes[0]);
 const input = useLocalStorage("input", "For your eyes only.");
 const key = useLocalStorage("cypherKey", "foobar");
-const toggle = useLocalStorage("toggle", false);
+const toggle = useLocalStorage("toggle", true);
 
 const output = computed(() =>
   encrypt(input.value, key.value, mode.value == "decrypt")

@@ -6,7 +6,7 @@
   <div class="h-full bg-slate-200 text-slate-900 font-mono">
     <header class="w-full h-14 shadow fixed bg-white top-0 z-50">
       <div
-        class="px-6 py-2 flex items-center justify-between mx-auto w-full max-w-screen-2xl"
+        class="px-4 md:px-8 lg:px-16 py-2 flex items-center justify-between mx-auto w-full"
       >
         <div class="space-x-2 flex items-center">
           <CypherLogo class="h-10" />

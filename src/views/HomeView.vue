@@ -37,7 +37,7 @@ watch(mode, (mode) => {
   <!-- <button class="px-2 py-1 bg-emerald-500 text-black rounded mb-2">
     Delete My Data
   </button> -->
-  <div class="flex w-full gap-2">
+  <div class="flex flex-col lg:flex-row w-full gap-2">
     <c-textarea v-model="input" title="input" />
     <RadioGroup v-model="mode">
       <RadioGroupLabel class="sr-only">Encrypt or Decrypt</RadioGroupLabel>

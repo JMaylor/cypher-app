@@ -69,15 +69,14 @@ const copyOutput = () => {
   <div
     class="flex flex-col lg:flex-row gap-8 items-center lg:items-start justify-center"
   >
-    <div class="w-full lg:flex-grow basis-0 shadow rounded bg-white max-w-xl">
-      <h1 class="p-2 text-primary text-lg font-bold border-b">Input</h1>
+    <CTextarea title="Input">
       <textarea
         class="p-2 resize-none w-full h-full block outline-none overflow-y-hidden focus:ring transition rounded bg-transparent"
         v-model="state.input"
         ref="inputTextarea"
       />
-    </div>
-    <div class="bg-white rounded shadow max-w-xl w-full lg:w-auto relative">
+    </CTextarea>
+    <CCard class="max-w-xl w-full lg:w-auto relative">
       <div
         class="h-8 w-8 absolute bg-primary left-1/2 -translate-x-4 top-0 -translate-y-full lg:-left-4 lg:translate-y-2 text-white text-xl flex items-center justify-center"
       >
@@ -119,7 +118,11 @@ const copyOutput = () => {
 
       <div class="px-4 py-2 space-y-2 border-b flex flex-col">
         <label for="key" class="text-primary uppercase font-bold">Key</label>
-        <input class="font-bold outline-none selection:text-black selection:bg-secondary" v-model="state.key" id="key" />
+        <input
+          class="font-bold outline-none selection:text-black selection:bg-secondary"
+          v-model="state.key"
+          id="key"
+        />
       </div>
       <div class="px-4 py-2 space-x-2 flex items-center">
         <label for="switch" class="text-primary uppercase font-bold"
@@ -133,33 +136,34 @@ const copyOutput = () => {
           class="accent-primary cursor-pointer"
         />
       </div>
-    </div>
-    <div class="w-full lg:flex-grow basis-0 shadow rounded bg-white max-w-xl">
-      <div class="flex justify-between items-center border-b p-2">
-        <h1 class="text-primary text-lg font-bold">Output</h1>
-        <button
-          @click="copyOutput"
-          class="h-6 w-6 flex justify-center items-center relative outline-none focus:ring rounded-full"
-        >
-          <span class="iconify" data-icon="akar-icons:clipboard"></span>
-          <transition
-            enter-from-class="opacity-0 scale-0"
-            enter-to-class="opacity-100 scale-100"
-            leave-from-class="opacity-100 scale-100"
-            leave-to-class="opacity-0 scale-0"
-            enter-active-class="transition"
-            leave-active-class="transition"
+    </CCard>
+    <CTextarea>
+      <template v-slot:title>
+        <div class="flex justify-between items-center border-b p-2">
+          <h1 class="text-primary text-lg font-bold">Output</h1>
+          <button
+            @click="copyOutput"
+            class="h-6 w-6 flex justify-center items-center relative outline-none focus:ring rounded-full"
           >
-            <div
-              class="absolute p-1 text-xs bg-primary text-white rounded-xl rounded-br-none top-1 -translate-y-full right-4"
-              v-if="textCopied"
+            <span class="iconify" data-icon="akar-icons:clipboard"></span>
+            <transition
+              enter-from-class="opacity-0 scale-0"
+              enter-to-class="opacity-100 scale-100"
+              leave-from-class="opacity-100 scale-100"
+              leave-to-class="opacity-0 scale-0"
+              enter-active-class="transition"
+              leave-active-class="transition"
             >
-              text copied!
-            </div>
-          </transition>
-        </button>
-      </div>
-
+              <div
+                class="absolute p-1 text-xs bg-primary text-white rounded-xl rounded-br-none top-1 -translate-y-full right-4"
+                v-if="textCopied"
+              >
+                text copied!
+              </div>
+            </transition>
+          </button>
+        </div>
+      </template>
       <textarea
         readonly
         :style="{ height: `${height + 16}px` }"
@@ -167,6 +171,6 @@ const copyOutput = () => {
         :value="output"
         ref="outputTextarea"
       />
-    </div>
+    </CTextarea>
   </div>
 </template>

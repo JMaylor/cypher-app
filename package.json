@@ -17,7 +17,6 @@
     "@iconify/iconify": "^2.1.0",
     "@vueuse/core": "^7.4.1",
     "autosize": "^5.0.1",
-    "pinia": "^2.0.9",
     "vue": "^3.2.26",
     "vue-router": "^4.0.12"
   },

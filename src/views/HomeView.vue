@@ -93,16 +93,14 @@ const copyOutput = () => {
           >
             <div
               :class="[
-                active
-                  ? 'ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60'
-                  : '',
-                checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white ',
+                active ? 'ring-2' : '',
+                checked ? 'bg-primary bg-opacity-75' : 'bg-white ',
               ]"
-              class="px-3 py-1 rounded shadow cursor-pointer focus:outline-none transition"
+              class="px-3 py-1 rounded shadow cursor-pointer focus:outline-none transition text-white"
             >
               <RadioGroupLabel
                 as="p"
-                :class="checked ? 'text-slate-100' : 'text-primary'"
+                :class="checked ? '' : 'text-primary'"
                 class="font-medium capitalize"
               >
                 {{ mode }}

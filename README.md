@@ -1,22 +1,24 @@
-# ecommerce
+# Cypher
 
-This template should help get you started developing with Vue 3 in Vite.
+This is an app build with Vue 3 + TypeScript. The aim of the app is to allow encryption or decryption of messages using the Vigenere cypher.
 
-## Recommended IDE Setup
+[Live Site](https://vigenere-cypher.netlify.app/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7ed30825-e5f7-4413-9b47-d7ce414b1355/deploy-status)](https://app.netlify.com/sites/vigenere-cypher/deploys)
 
-## Type Support for `.vue` Imports in TS
+## Using the site
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates.
+1. Enter the message you want to encrypt into the input section.
+2. Enter your cypher key into the key input.
+3. Your encrypted message will be shown in the output section.
 
-However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### Encrypt / Decrypt
+You can also decrypt secret messages that someone else has sent to you, provided you have the encryption key. Simply select 'Decrypt' in the settings, enter the cypher text into the input, set the cypher key and you will be shown the original message in the output.
 
-## Customize configuration
+### Flip text on mode change?
+If this toggle is selected, then when Encrypt / Decrypt is changed, the input text will be replaced by the output text. This allows a quick way for you to toggle between encrypt and decrpyt and make sure that your message will be decrpyted properly.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Project Setup for Local Development
 
 ```sh
 npm install
@@ -34,21 +36,6 @@ npm run dev
 npm run build
 ```
 
-### Run Unit Tests with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction)
+### Recommended IDE Setup
 
-```sh
-npm run test:unit # or `npm run test:unit:ci` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur).

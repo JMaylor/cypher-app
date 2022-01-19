@@ -79,12 +79,12 @@ const copyOutput = () => {
     </div>
     <div class="bg-white rounded shadow max-w-xl w-full lg:w-auto relative">
       <div
-        class="h-8 w-8 absolute bg-primary left-1/2 lg:-translate-x-4 top-0 -translate-y-full lg:-left-4 lg:translate-y-2 text-white text-xl flex items-center justify-center"
+        class="h-8 w-8 absolute bg-primary left-1/2 -translate-x-4 top-0 -translate-y-full lg:-left-4 lg:translate-y-2 text-white text-xl flex items-center justify-center"
       >
         +
       </div>
       <div
-        class="h-8 w-8 absolute bg-primary left-1/2 lg:left-auto bottom-0 lg:top-0 translate-y-full lg:right-0 lg:translate-x-full lg:translate-y-2 text-white text-xl flex items-center justify-center"
+        class="h-8 w-8 absolute bg-primary left-1/2 -translate-x-4 lg:left-auto bottom-0 lg:top-0 translate-y-full lg:right-0 lg:translate-x-full lg:translate-y-2 text-white text-xl flex items-center justify-center"
       >
         =
       </div>

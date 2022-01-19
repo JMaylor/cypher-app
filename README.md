@@ -18,6 +18,13 @@ You can also decrypt secret messages that someone else has sent to you, provided
 ### Flip text on mode change?
 If this toggle is selected, then when Encrypt / Decrypt is changed, the input text will be replaced by the output text. This allows a quick way for you to toggle between encrypt and decrpyt and make sure that your message will be decrpyted properly.
 
+### Other notes
+The alphabet used in this cypher is as follows: (including the space at the end)
+```
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,?!'_-&@#$%*() 
+```
+Any other characters will be unchanged in the cypher text. Line breaks are also carried over, so paragraph structure is generally maintained too.
+
 ## Project Setup for Local Development
 
 ```sh

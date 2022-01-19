@@ -8,5 +8,5 @@ body {
 }
 
 #app {
-  @apply flex flex-col h-full font-mono;
+  @apply flex flex-col h-full min-h-full font-mono;
 }

@@ -6,5 +6,5 @@
     </div>
   </header>
   <main class="flex-grow bg-slate-100 p-8"><router-view /></main>
-  <footer class="w-full bg-red-200">Made in 2022</footer>
+  <footer class="w-full border-t p-4 text-center">Made in 2022</footer>
 </template>

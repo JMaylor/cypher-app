@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Ref } from "vue";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import { encrypt } from "@/encryption";
 import autosize from "autosize";
@@ -44,10 +45,17 @@ watch([() => state.value.input, inputTextarea], () => {
   autosize(inputTextarea.value);
 });
 
-const outputTextarea = ref();
+const textCopied = ref(false);
+const copiedTimeout: Ref<null | ReturnType<typeof setTimeout>> = ref(null);
 const copyOutput = () => {
-  outputTextarea.value.text.select();
-  document.execCommand("copy");
+  const cb = navigator.clipboard;
+  cb.writeText(output.value).then(() => {
+    textCopied.value = true;
+    if (copiedTimeout.value) clearTimeout(copiedTimeout.value);
+    copiedTimeout.value = setTimeout(() => {
+      textCopied.value = false;
+    }, 3000);
+  });
 };
 </script>
 
@@ -64,7 +72,6 @@ const copyOutput = () => {
     <div class="w-full lg:flex-grow basis-0 shadow rounded bg-white max-w-xl">
       <h1 class="p-2 text-primary text-lg font-bold border-b">Input</h1>
       <textarea
-        rows="6"
         class="p-2 resize-none w-full h-full block outline-none overflow-y-hidden focus:ring transition rounded bg-transparent"
         v-model="state.input"
         ref="inputTextarea"
@@ -94,7 +101,7 @@ const copyOutput = () => {
             <div
               :class="[
                 active ? 'ring-2' : '',
-                checked ? 'bg-primary bg-opacity-75' : 'bg-white ',
+                checked ? 'bg-primary' : 'bg-white ',
               ]"
               class="px-3 py-1 rounded shadow cursor-pointer focus:outline-none transition text-white"
             >
@@ -112,7 +119,7 @@ const copyOutput = () => {
 
       <div class="px-4 py-2 space-y-2 border-b flex flex-col">
         <label for="key" class="text-primary uppercase font-bold">Key</label>
-        <input class="font-bold outline-none" v-model="state.key" id="key" />
+        <input class="font-bold outline-none selection:text-black selection:bg-secondary" v-model="state.key" id="key" />
       </div>
       <div class="px-4 py-2 space-x-2 flex items-center">
         <label for="switch" class="text-primary uppercase font-bold"
@@ -132,9 +139,24 @@ const copyOutput = () => {
         <h1 class="text-primary text-lg font-bold">Output</h1>
         <button
           @click="copyOutput"
-          class="h-6 w-6 flex justify-center items-center"
+          class="h-6 w-6 flex justify-center items-center relative outline-none focus:ring rounded-full"
         >
           <span class="iconify" data-icon="akar-icons:clipboard"></span>
+          <transition
+            enter-from-class="opacity-0 scale-0"
+            enter-to-class="opacity-100 scale-100"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-0"
+            enter-active-class="transition"
+            leave-active-class="transition"
+          >
+            <div
+              class="absolute p-1 text-xs bg-primary text-white rounded-xl rounded-br-none top-1 -translate-y-full right-4"
+              v-if="textCopied"
+            >
+              text copied!
+            </div>
+          </transition>
         </button>
       </div>
 

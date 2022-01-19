@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CCard: typeof import('./src/components/CCard.vue')['default']
     CTextarea: typeof import('./src/components/CTextarea.vue')['default']
     CypherLogo: typeof import('./src/components/images/CypherLogo.vue')['default']
   }

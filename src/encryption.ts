@@ -89,11 +89,11 @@ export function encrypt(
   if (key.length === 0 || input.length === 0) return input;
   const inputArray = input.split("");
   const keyArray = key.split("");
-  const keyLength = keyArray.length;
   const outputArray = inputArray.map((character, i) => {
     const characterIndex = alphabet.indexOf(character);
     if (characterIndex === -1) return character;
-    const keyIndex = alphabet.indexOf(keyArray[i % keyLength]);
+    const keyIndex = alphabet.indexOf(keyArray[i % keyArray.length]);
+    if (keyIndex === -1) return character;
     const index = decrypt
       ? characterIndex - keyIndex + alphabetLength
       : characterIndex + keyIndex;

@@ -10,18 +10,21 @@ const input = ref();
 watch(
   () => props.modelValue,
   () => {
-    autosize(input.value);
+    console.log("change detected... autosizing...");
+    setTimeout(() => {
+      autosize(input.value);
+    }, 0);
   }
 );
-setTimeout(() => {
-  autosize(input.value);
-}, 0);
+
+autosize(input.value);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
 }>();
 
 function onInput(event: InputEvent) {
+  console.log("on input");
   emit("update:modelValue", (<HTMLTextAreaElement>event.target).value);
 }
 </script>
@@ -33,7 +36,7 @@ function onInput(event: InputEvent) {
     </div>
     <textarea
       ref="input"
-      class="bg-white flex-grow resize-none rounded-b p-2"
+      class="bg-white flex-grow resize-none rounded-b p-2 overflow-y-clip"
       @input="onInput($event as InputEvent)"
       :value="modelValue"
       v-bind="$attrs"

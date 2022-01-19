@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 html,
-body,
-#app {
+body {
   height: 100%;
+}
+
+#app {
+  @apply flex flex-col h-full font-mono;
 }
